@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react'
+import { View, Button } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import About from './screens/About'
+import Home from './screens/Home'
+import APIContextProvider from './components/APIContext'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createNativeStackNavigator()
+const Drawer = createDrawerNavigator()
+
+function NotificationsScreen({ navigation }) {
+	return (
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+			<Button onPress={() => navigation.goBack()} title="Go back home" />
+		</View>
+	)
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function App() {
+	return (
+		<APIContextProvider>
+			<NavigationContainer>
+				<Drawer.Navigator initialRouteName="Home">
+					<Drawer.Screen name="Home" component={Home} />
+					<Drawer.Screen name="About" component={About} />
+					<Drawer.Screen name="Notifications" component={NotificationsScreen} />
+				</Drawer.Navigator>
+			</NavigationContainer>
+		</APIContextProvider>
+	)
+}
+
+export default App
