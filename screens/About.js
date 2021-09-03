@@ -1,43 +1,20 @@
-import { View, Text, Button, TextInput } from 'react-native'
-import React, { useState } from 'react'
-import MemesFlatList from '../components/MemesFlatList'
-import { useAPI } from '../components/APIContext'
+import React from 'react'
+import { View, Text, Button } from 'react-native'
+import ScreenTitle from '../components/ScreenTitle'
 
-const About = () => {
-	const [amount, setAmount] = useState(5)
-	const [memesToRender, setMemesToRender] = useState(1)
-	const { meme } = useAPI()
-
-	function sliceMemes(props) {
-		if (props < 1 || props > 100) {
-			alert('Can only select a number between 1-100')
-		}
-		setAmount(props)
-	}
-
+const About = ({ navigation }) => {
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Famous meme templates</Text>
-			<View>
-				<Text>Select how many memes to be rendered:</Text>
-				<TextInput
-					style={{ borderWidth: 1, borderRadius: 1 }}
-					type="numbers"
-					keyboardType="numeric"
-					onChange={(event) => setMemesToRender(event.target.value)}
-				></TextInput>
-			</View>
-			<Button
-				onPress={() => {
-					sliceMemes(memesToRender)
-				}}
-				title="Render"
-			/>
-			{meme ? (
-				<MemesFlatList meme={meme.slice(0, amount)} />
-			) : (
-				<Text> Couldn't fetch data..</Text>
-			)}
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
+			<ScreenTitle message="About Memes" />
+			<Text style={{ fontSize: 20 }}>
+				A meme is a cultural item that is transmitted by repetition and
+				replication in a manner analogous to the biological transmission of
+				genes.
+				<br />
+				An item in the form of an image, video, phrase, etc., that is spread via
+				the internet and often altered in a creative or humorous way.
+			</Text>
+			<Button onPress={() => navigation.goBack()} title="Go back home" />
 		</View>
 	)
 }

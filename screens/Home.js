@@ -1,25 +1,29 @@
 import { View, Text, Button, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import logo from '../assets/meme-logo.png'
+import ScreenTitle from '../components/ScreenTitle'
 
 function Home({ navigation }) {
-	const memeLogo = logo
 	const [name, setName] = useState('')
 	const [typedName, setTypedName] = useState(false)
 
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
-			<Text style={{ fontSize: 25 }}>Home Screen</Text>
+			<ScreenTitle message="Classic Meme Images" />
 
-			<Image source={memeLogo} style={{ width: 500, height: 450 }}></Image>
+			<Image
+				resizeMode="contain"
+				source={logo}
+				style={{ width: '75%', height: '75%' }}
+			/>
 
 			<TextInput
 				style={{ borderWidth: 1, borderRadius: 1 }}
 				placeholder="What's your name?"
 				onChange={(event) => setName(event.target.value)}
-			></TextInput>
+			/>
 
-			{name.length > 3 && typedName === false && (
+			{name.length > 2 && typedName === false && (
 				<Button title="Get a greeting" onPress={() => setTypedName(true)} />
 			)}
 

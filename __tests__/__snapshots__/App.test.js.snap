@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "top",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "top",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 25,
+        }
+      }
+    >
+      Classic Meme Images
+    </Text>
+  </View>
+  <Image
+    resizeMode="contain"
+    source={
+      Object {
+        "testUri": "../../../assets/meme-logo.png",
+      }
+    }
+    style={
+      Object {
+        "height": "75%",
+        "width": "75%",
+      }
+    }
+  />
+  <TextInput
+    onChange={[Function]}
+    placeholder="What's your name?"
+    style={
+      Object {
+        "borderRadius": 1,
+        "borderWidth": 1,
+      }
+    }
+  />
+</View>
+`;

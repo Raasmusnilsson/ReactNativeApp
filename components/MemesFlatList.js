@@ -1,4 +1,4 @@
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList, Dimensions } from 'react-native'
 import * as React from 'react'
 
 const MemesFlatList = (props) => {
@@ -19,7 +19,13 @@ const MemesFlatList = (props) => {
 				>
 					<Text style={{ fontSize: 25 }}>{item.name}</Text>
 					<Image
-						style={{ width: 650, height: 600, flex: 1 }}
+						resizeMode="contain"
+						style={{
+							flex: 1,
+							overflow: 'visible',
+							width: 350,
+							height: 350,
+						}}
 						source={{ uri: item.url }}
 					/>
 				</View>
